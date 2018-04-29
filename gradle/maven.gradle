@@ -1,0 +1,17 @@
+subprojects {
+    group = 'com.jeanchampemont.samshin'
+    version = version
+
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

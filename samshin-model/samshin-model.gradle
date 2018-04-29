@@ -1,0 +1,5 @@
+dependencies {
+    compile libraries.kotlin.stdlib
+    compile libraries.spring.boot.starter.data.couchbase
+    compile libraries.javax.validation
+}

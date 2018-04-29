@@ -1,0 +1,7 @@
+dependencies {
+    compile libraries.kotlin.stdlib
+    compile libraries.spring.boot.starter.data.couchbase
+    compile libraries.spring.boot.starter.validation
+
+    compile project(':samshin-model')
+}

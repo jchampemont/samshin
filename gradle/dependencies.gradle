@@ -1,0 +1,40 @@
+ext {
+    versions = [
+            graphql: [
+                    core: "4.3.0",
+                    boot: "4.0.0"
+            ]
+    ]
+
+    libraries = [
+            couchbase: [
+                    client: "com.couchbase.client:java-client"
+            ],
+            graphql  : "com.graphql-java:graphql-java-tools:${versions.graphql.core}",
+            javax    : [
+                    inject    : "javax.inject:javax.inject:1",
+                    validation: "javax.validation:validation-api"
+            ],
+            kotlin   : [
+                    stdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+                    reflect: "org.jetbrains.kotlin:kotlin-reflect"
+            ],
+            spring   : [
+                    boot: [
+                            devtools: "org.springframework.boot:spring-boot-devtools",
+                            starter : [
+                                    actuator  : "org.springframework.boot:spring-boot-starter-actuator",
+                                    core      : "org.springframework.boot:spring-boot-starter",
+                                    data      : [
+                                            couchbase: "org.springframework.boot:spring-boot-starter-data-couchbase"
+                                    ],
+                                    graphql   : "com.graphql-java:graphql-spring-boot-starter:${versions.graphql.boot}",
+                                    graphiql  : "com.graphql-java:graphiql-spring-boot-starter:${versions.graphql.boot}",
+                                    test      : "org.springframework.boot:spring-boot-starter-test",
+                                    validation: "org.springframework.boot:spring-boot-starter-validation",
+                                    web       : "org.springframework.boot:spring-boot-starter-web"
+                            ]
+                    ]
+            ]
+    ]
+}

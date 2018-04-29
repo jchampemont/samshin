@@ -1,0 +1,9 @@
+type Query {
+    allAccount: [UserAccount]!
+}
+
+type UserAccount {
+    userId: ID!
+    login: String!
+    email: String!
+}

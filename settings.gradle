@@ -1,0 +1,11 @@
+rootProject.name = "samshin"
+
+include(
+        'samshin-app',
+        'samshin-core',
+        'samshin-graphql',
+        'samshin-model',
+        'samshin-persistence'
+)
+
+rootProject.children.each { it.buildFileName = "${it.name}.gradle" }

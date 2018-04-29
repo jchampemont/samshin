@@ -1,0 +1,7 @@
+dependencies {
+    compile libraries.kotlin.stdlib
+    compile libraries.spring.boot.starter.graphql
+    compile libraries.graphql
+
+    compile project(':samshin-core')
+}

@@ -1,0 +1,6 @@
+dependencies {
+    compile libraries.kotlin.stdlib
+
+    compile project(':samshin-model')
+    compile project(':samshin-persistence')
+}

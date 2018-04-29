@@ -1,0 +1,15 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile libraries.kotlin.stdlib
+    compile libraries.kotlin.reflect
+    compile libraries.spring.boot.starter.actuator
+    compile libraries.spring.boot.starter.web
+
+    compile project(':samshin-graphql')
+
+    runtime libraries.spring.boot.devtools
+    runtime libraries.spring.boot.starter.graphiql
+
+    testCompile libraries.spring.boot.starter.test
+}
