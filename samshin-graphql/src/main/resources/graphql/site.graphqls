@@ -1,0 +1,13 @@
+type Site {
+    code: String!,
+    name: String!,
+    description: String
+}
+
+extend type Query {
+    allSites: [Site]!
+}
+
+extend type Mutation {
+    createSite(code: String!, name: String!, description: String): Site!
+}

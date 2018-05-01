@@ -17,12 +17,7 @@
  */
 package com.jeanchampemont.samshin.graphql.model
 
-data class UserAccount(
-        val userId: String,
-        val login: String,
-        val email: String
-) {
-    companion object {
-        fun from(userAccount: com.jeanchampemont.samshin.model.UserAccount) = UserAccount(userAccount.userId.toString(), userAccount.login, userAccount.email)
-    }
-}
+data class LoginResponse(
+        val success: Boolean,
+        val token: String? = null
+)

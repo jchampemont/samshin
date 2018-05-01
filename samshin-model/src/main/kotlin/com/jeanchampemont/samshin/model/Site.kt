@@ -15,14 +15,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql.model
+package com.jeanchampemont.samshin.model
 
-data class UserAccount(
-        val userId: String,
-        val login: String,
-        val email: String
-) {
-    companion object {
-        fun from(userAccount: com.jeanchampemont.samshin.model.UserAccount) = UserAccount(userAccount.userId.toString(), userAccount.login, userAccount.email)
-    }
-}
+import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.Version
+import org.springframework.data.couchbase.core.mapping.Document
+import javax.validation.constraints.Size
+
+@Document
+data class Site(
+        @field:Id
+        @field:Size(min = 3, max = 3)
+        var code: String,
+
+        @field:Version
+        var version: Long? = null,
+
+        @field:Size(min = 3, max = 32)
+        var name: String,
+
+        @field:Size(min = 0)
+        var description: String?
+)

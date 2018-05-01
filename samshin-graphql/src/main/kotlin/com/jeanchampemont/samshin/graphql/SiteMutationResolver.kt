@@ -15,14 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql.query
+package com.jeanchampemont.samshin.graphql
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver
-import com.jeanchampemont.samshin.graphql.model.UserAccount
-import com.jeanchampemont.samshin.persistence.UserAccountRepository
+import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import com.jeanchampemont.samshin.core.SiteService
+import com.jeanchampemont.samshin.graphql.model.Site
 import org.springframework.stereotype.Component
 
 @Component
-class UserAccountResolver(private val userAccountRepository: UserAccountRepository) : GraphQLQueryResolver {
-    fun allAccount() = userAccountRepository.findAll().map { UserAccount(it.userId.toString(), it.login, it.email) }
+class SiteMutationResolver(
+        private val siteService: SiteService
+) : GraphQLMutationResolver {
+    fun createSite(code: String, name: String, description: String?) = Site.from(siteService.create(code, name, description))
 }

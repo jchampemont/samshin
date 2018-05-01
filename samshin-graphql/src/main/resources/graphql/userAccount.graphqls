@@ -1,9 +1,13 @@
-type Query {
-    allAccount: [UserAccount]!
-}
-
 type UserAccount {
     userId: ID!
     login: String!
     email: String!
+}
+
+extend type Query {
+    allAccount: [UserAccount]!
+}
+
+extend type Mutation {
+    createAccount(login: String!, email: String!): UserAccount!
 }

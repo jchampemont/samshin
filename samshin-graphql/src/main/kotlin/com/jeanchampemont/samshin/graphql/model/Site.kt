@@ -17,12 +17,12 @@
  */
 package com.jeanchampemont.samshin.graphql.model
 
-data class UserAccount(
-        val userId: String,
-        val login: String,
-        val email: String
+data class Site(
+        val code: String,
+        val name: String,
+        val description: String?
 ) {
     companion object {
-        fun from(userAccount: com.jeanchampemont.samshin.model.UserAccount) = UserAccount(userAccount.userId.toString(), userAccount.login, userAccount.email)
+        fun from(site: com.jeanchampemont.samshin.model.Site) = Site(site.code, site.name, site.description)
     }
 }

@@ -38,7 +38,7 @@ class SamshinApplication {
     @Bean
     fun initialize(accountService: UserAccountService) = InitializingBean { accountService.create("toto", "toto@samshin.com") }
 
-    @Bean
+    @Bean(name = [BeanNames.COUCHBASE_INDEX_MANAGER])
     fun indexManager() = IndexManager(true, false, false)
 
     @Bean

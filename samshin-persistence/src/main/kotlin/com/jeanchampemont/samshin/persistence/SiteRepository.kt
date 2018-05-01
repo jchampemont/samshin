@@ -15,14 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql.model
+package com.jeanchampemont.samshin.persistence
 
-data class UserAccount(
-        val userId: String,
-        val login: String,
-        val email: String
-) {
-    companion object {
-        fun from(userAccount: com.jeanchampemont.samshin.model.UserAccount) = UserAccount(userAccount.userId.toString(), userAccount.login, userAccount.email)
-    }
+import com.jeanchampemont.samshin.model.Site
+import org.springframework.data.couchbase.core.query.ViewIndexed
+import org.springframework.data.repository.CrudRepository
+
+@ViewIndexed(designDoc = "site")
+interface SiteRepository : CrudRepository<Site, String> {
+    fun findByCode(code: String): Site?
 }

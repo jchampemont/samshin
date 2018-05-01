@@ -1,0 +1,12 @@
+type Query {
+    version: String!
+}
+
+type Mutation {
+    login(login: String!, password: String!): LoginResponse!
+}
+
+type LoginResponse {
+    success: Boolean!
+    token: String
+}
