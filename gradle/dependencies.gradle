@@ -12,7 +12,6 @@ ext {
             ],
             graphql  : "com.graphql-java:graphql-java-tools:${versions.graphql.core}",
             javax    : [
-                    inject    : "javax.inject:javax.inject:1",
                     validation: "javax.validation:validation-api"
             ],
             kotlin   : [
@@ -30,6 +29,7 @@ ext {
                                     ],
                                     graphql   : "com.graphql-java:graphql-spring-boot-starter:${versions.graphql.boot}",
                                     graphiql  : "com.graphql-java:graphiql-spring-boot-starter:${versions.graphql.boot}",
+                                    security  : "org.springframework.boot:spring-boot-starter-security",
                                     test      : "org.springframework.boot:spring-boot-starter-test",
                                     validation: "org.springframework.boot:spring-boot-starter-validation",
                                     web       : "org.springframework.boot:spring-boot-starter-web"
