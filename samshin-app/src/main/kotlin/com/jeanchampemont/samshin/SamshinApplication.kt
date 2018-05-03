@@ -17,51 +17,14 @@
  */
 package com.jeanchampemont.samshin
 
-import com.jeanchampemont.samshin.core.UserAccountService
-import org.springframework.beans.factory.InitializingBean
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.context.annotation.Bean
-import org.springframework.core.convert.converter.Converter
-import org.springframework.data.convert.ReadingConverter
-import org.springframework.data.convert.WritingConverter
-import org.springframework.data.couchbase.config.BeanNames
-import org.springframework.data.couchbase.core.convert.CouchbaseCustomConversions
-import org.springframework.data.couchbase.core.mapping.event.ValidatingCouchbaseEventListener
-import org.springframework.data.couchbase.repository.support.IndexManager
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
-import java.util.*
 
 
 @SpringBootApplication
-class SamshinApplication {
-    @Bean
-    fun initialize(accountService: UserAccountService) = InitializingBean { accountService.create("toto", "toto@samshin.com") }
+class SamshinApplication
 
-    @Bean(name = [BeanNames.COUCHBASE_INDEX_MANAGER])
-    fun indexManager() = IndexManager(true, false, false)
-
-    @Bean
-    fun validator() = LocalValidatorFactoryBean()
-
-    @Bean
-    fun validationEventListener() = ValidatingCouchbaseEventListener(validator())
-
-    @Bean(name = [BeanNames.COUCHBASE_CUSTOM_CONVERSIONS])
-    fun customConversions() = CouchbaseCustomConversions(listOf(UUIDReadingConverter, UUIDWritingConverter))
-}
-
-@WritingConverter
-object UUIDWritingConverter : Converter<UUID, String> {
-    override fun convert(source: UUID): String? = source.toString()
-}
-
-@ReadingConverter
-object UUIDReadingConverter : Converter<String, UUID> {
-    override fun convert(source: String): UUID? = UUID.fromString(source)
-}
 
 fun main(args: Array<String>) {
     runApplication<SamshinApplication>(*args)
 }
-
