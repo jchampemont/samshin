@@ -15,16 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql
+package com.jeanchampemont.samshin.graphql.mutation
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
-import com.jeanchampemont.samshin.core.SiteService
-import com.jeanchampemont.samshin.graphql.model.Site
+import com.jeanchampemont.samshin.graphql.model.LoginResponse
 import org.springframework.stereotype.Component
 
 @Component
-class SiteMutationResolver(
-        private val siteService: SiteService
-) : GraphQLMutationResolver {
-    fun createSite(code: String, name: String, description: String?) = Site.from(siteService.create(code, name, description))
+class RootMutationResolver : GraphQLMutationResolver {
+    fun login(login: String, password: String) = LoginResponse(false)
 }

@@ -15,16 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql
+package com.jeanchampemont.samshin.graphql.query
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
-import com.jeanchampemont.samshin.graphql.model.UserAccount
-import com.jeanchampemont.samshin.persistence.UserAccountRepository
 import org.springframework.stereotype.Component
 
 @Component
-class UserAccountQueryResolver(
-        private val userAccountRepository: UserAccountRepository
-) : GraphQLQueryResolver {
-    fun allAccount() = userAccountRepository.findAll().map { UserAccount.from(it) }
+class RootQueryResolver : GraphQLQueryResolver {
+    fun version() = 1
 }

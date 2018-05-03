@@ -15,14 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jeanchampemont.samshin.graphql
+package com.jeanchampemont.samshin.graphql.mutation
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
-import com.jeanchampemont.samshin.core.UserAccountService
-import com.jeanchampemont.samshin.graphql.model.UserAccount
+import com.jeanchampemont.samshin.core.SiteService
+import com.jeanchampemont.samshin.graphql.model.Site
 import org.springframework.stereotype.Component
 
 @Component
-class UserAccountMutationResolver(private val userAccountService: UserAccountService) : GraphQLMutationResolver {
-    fun createAccount(login: String, email: String) = UserAccount.from(userAccountService.create(login, email))
+class SiteMutationResolver(
+        private val siteService: SiteService
+) : GraphQLMutationResolver {
+    fun createSite(code: String, name: String, description: String?) = Site.from(siteService.create(code, name, description))
 }
