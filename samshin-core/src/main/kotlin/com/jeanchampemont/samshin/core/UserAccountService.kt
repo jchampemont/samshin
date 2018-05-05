@@ -19,34 +19,20 @@ package com.jeanchampemont.samshin.core
 
 import com.jeanchampemont.samshin.model.UserAccount
 import com.jeanchampemont.samshin.persistence.UserAccountRepository
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*
 
 interface UserAccountService {
-    fun create(login: String, email: String): UserAccount
-    fun get(userId: String): UserAccount?
-    fun update(userId: String, login: String?, email: String?)
+    fun create(email: String, password: String): UserAccount
 }
 
 @Service
-class UserAccountServiceImpl(val repository: UserAccountRepository) : UserAccountService {
+class UserAccountServiceImpl(
+        private val repository: UserAccountRepository,
+        private val passwordEncoder: PasswordEncoder
+) : UserAccountService {
 
-    override fun create(login: String, email: String): UserAccount {
-        return repository.save(UserAccount(userId = UUID.randomUUID(), login = login, email = email))
-    }
-
-    override fun get(userId: String): UserAccount? {
-        return repository.findById(userId).orElse(null)
-    }
-
-    override fun update(userId: String, login: String?, email: String?) {
-        repository.findById(userId)
-                .map {
-                    it.login = login ?: it.login
-                    it.email = email ?: it.email
-                    it
-                }
-                .ifPresent({ repository.save(it) })
-    }
+    override fun create(email: String, password: String) = repository.save(UserAccount(userId = UUID.randomUUID(), email = email, password = passwordEncoder.encode(password)))
 
 }

@@ -1,5 +1,6 @@
 dependencies {
     compile libraries.kotlin.stdlib
+    compile libraries.spring.boot.starter.security
 
     compile project(':samshin-model')
     compile project(':samshin-persistence')

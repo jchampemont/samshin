@@ -1,6 +1,5 @@
 type UserAccount {
     userId: ID!
-    login: String!
     email: String!
 }
 
@@ -9,5 +8,5 @@ extend type Query {
 }
 
 extend type Mutation {
-    createAccount(login: String!, email: String!): UserAccount!
+    createAccount(email: String!, password: String!): UserAccount!
 }

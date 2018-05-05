@@ -38,10 +38,9 @@ data class UserAccount(
         @field:Version
         var version: Long? = null,
 
-        @field:Size(min = 3, max = 128)
-        var login: String,
-
         @field:Email
         @field:Size(min = 3, max = 128)
-        var email: String
+        var email: String,
+
+        var password: String
 )

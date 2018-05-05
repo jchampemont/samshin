@@ -24,5 +24,5 @@ import org.springframework.stereotype.Component
 
 @Component
 class UserAccountMutationResolver(private val userAccountService: UserAccountService) : GraphQLMutationResolver {
-    fun createAccount(login: String, email: String) = UserAccount.from(userAccountService.create(login, email))
+    fun createAccount(login: String, password: String) = UserAccount.from(userAccountService.create(login, password))
 }
